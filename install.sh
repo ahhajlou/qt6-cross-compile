@@ -397,4 +397,4 @@ echo -e "${GREEN}Copy compiled files to raspberry pi${ENDCOLOR}"
 rsync -avz --rsync-path="sudo rsync" -e "ssh -i $BULD_DIR_PATH/tmp/sshkey" "$BULD_DIR_PATH"/qt-raspi/* "$RASPBERRY_PI_USERNAME"@"$RASPBERRY_PI_IP":/usr/local/qt6
 
 # Set LD_LIBRARY_PATH Environment variable in .bashrc on raspberry pi
-ssh -i $BULD_DIR_PATH/tmp/sshkey "$RASPBERRY_PI_USERNAME"@"$RASPBERRY_PI_IP" -C 'bash -c "echo 'export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/local/qt6/lib/' >>~/.bashrc"'
+ssh -i $BULD_DIR_PATH/tmp/sshkey "$RASPBERRY_PI_USERNAME"@"$RASPBERRY_PI_IP" -C 'bash -c "echo '\''export LD_LIBRARY_PATH=\${LD_LIBRARY_PATH}:/usr/local/qt6/lib/'\'' >> ~/.bashrc"'
