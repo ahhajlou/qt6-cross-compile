@@ -319,7 +319,9 @@ set(CMAKE_CXX_FLAGS "\${CMAKE_C_FLAGS}")
 
 set(QT_COMPILER_FLAGS "-march=armv8-a")
 set(QT_COMPILER_FLAGS_RELEASE "-O2 -pipe")
-set(QT_LINKER_FLAGS "-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed")
+
+#set(QT_LINKER_FLAGS "-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed")
+set(QT_LINKER_FLAGS "-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed -ldbus-1")
 
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
@@ -376,6 +378,13 @@ set(XCB_XCB_INCLUDE_DIR \${GL_INC_DIR})
 set(XCB_XCB_LIBRARY \${XCB_PATH_VARIABLE}/usr/lib/aarch64-linux-gnu/libxcb.so)
 EOF
 
+
+# Not tested
+cd "$BULD_DIR_PATH"/rpi-sysroot/usr/lib/aarch64-linux-gnu
+unlink libdbus-1.so
+# exact version of library may be changed
+ln -s libdbus-1.so.3.32.4 libdbus-1.so
+# ----------
 
 # Build Qt for raspberry pi on host
 echo -e "${GREEN}Build and cross compile Qt for raspberry pi${ENDCOLOR}"
