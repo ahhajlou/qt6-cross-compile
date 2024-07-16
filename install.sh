@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # https://wiki.qt.io/Cross-Compile_Qt_6_for_Raspberry_Pi
+# https://medium.com/@nadzeya/ssh-x-forwarding-or-how-to-open-desktop-applications-on-linux-server-c198b00a6a55
+
 
 export RED="\e[31m"
 export BOLDRED="\e[1;31m"
